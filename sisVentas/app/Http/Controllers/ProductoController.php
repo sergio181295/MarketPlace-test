@@ -4,10 +4,9 @@ namespace sisVentas\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// use sisVentas\Http\Request;
 use sisVentas\ProductoModel;
 use Illuminate\Support\Facades\Redirect;
-use sisVentas\Http\Request\ProductoRequest;
+use sisVentas\Http\Requests\ProductoRequest;
 use DB;
 
 class ProductoController extends Controller
@@ -35,13 +34,25 @@ class ProductoController extends Controller
 
     public function Store(ProductoRequest $request){
     	$productoM = new ProductoModel;
-    	$productoM->fk_idVendedor = $request->get('fk_vendedor');
-    	$productoM->Nombre = $request->get('nombre');
-		$productoM->Peso = $request->get('peso');
-    	$productoM->Descripcion = $request->get('descripcion');
-    	$productoM->PrecioCosto = $request->get('precioCosto');
-    	$productoM->PrecioVenta = $request->get('precioVenta');
+        $productoM->fk_idVendedor = $request->get('fk_vendedor');
+        $productoM->Nombre = $request->get('nombre');
+        $productoM->Descripcion = $request->get('descripcion');
+        $peso = $request->get('peso');
+        $productoM->Peso = $peso;
+        $costo = $request->get('precioCosto');
+        $productoM->PrecioCosto = $costo;
 
+        //CALCULANDO PRECIO DE VENTA
+        $seguro = 0.07;
+        $iva = 0.12;
+        $precioEnvio = 3.55;
+        $final = $peso * $precioEnvio;
+        $final = $final + $costo;  
+        $final = $final + ($costo * $seguro);
+        $final = $final + ($iva * $final);
+
+        $productoM->PrecioVenta = round($final,2);
+        $productoM->save();
     	return Redirect::to('Almacen/Productos');
     }
 
