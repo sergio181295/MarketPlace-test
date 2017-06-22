@@ -28,7 +28,7 @@
 						<td>{{$pro->PrecioCosto}}</td>
 						<td>{{$pro->PrecioVenta}}</td>
 						<td>
-							<a href=""><button class="btn btn-info">Editar</button></a>
+							<a href="{{URL::action('ProductoController@edit',$pro->idProducto)}}"><button class="btn btn-info">Editar</button></a>
 							<a href=""><button class="btn btn-danger">Eliminar</button></a>
 						</td>
 					</tr>
