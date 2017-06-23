@@ -31,13 +31,13 @@
 				<input type="text" name="nombre" class="form-control" placeholder="Nombre">
 			</div>
 			<div class="form-group">
-				<label for="peso">Peso</label>
+				<label for="peso">Peso (lb)</label>
 				<input type="text" name="peso" class="form-control" placeholder="0">
 			</div>
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<div class="form-group">
-				<label for="precioCosto">Precio de Costo</label>
+				<label for="precioCosto">Precio de Costo ($)</label>
 				<input type="text" name="precioCosto" class="form-control" placeholder="0">
 			</div>
 			<div class="form-group">
