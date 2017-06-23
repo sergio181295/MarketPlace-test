@@ -28,8 +28,8 @@ class ProductoController extends Controller
     }
 
     public function create(){
-    	return view("Almacen.Productos.Create");
-
+        $vendedores = DB::table('Vendedor')->get();
+    	return view("Almacen.Productos.Create",["vendedores"=>$vendedores]);
     }
 
     public function store(ProductoRequest $request){
@@ -61,7 +61,8 @@ class ProductoController extends Controller
     }
 
     public function edit($id){
-    	return view("Almacen.Productos.edit",["producto"=>ProductoModel::findOrFail($id)]);
+        $vendedores = DB::table('Vendedor')->get();
+    	return view("Almacen.Productos.edit",["producto"=>ProductoModel::findOrFail($id),"vendedores"=>$vendedores]);
     }
 
     public function update(ProductoRequest $request, $id){
@@ -91,6 +92,6 @@ class ProductoController extends Controller
     public function destroy($id){
         $productoM = ProductoModel::findOrFail($id);
         $productoM->delete();
-        return redirect()->route('Productos.index');
+        return Redirect::to('Almacen/Productos');
     }
 }

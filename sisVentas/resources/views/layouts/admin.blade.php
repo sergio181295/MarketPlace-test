@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ADVentas | www.incanatoit.com</title>
+    <title>MarketPlace</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -29,7 +29,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>AD</b>V</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>SisVentas</b></span>
+          <span class="logo-lg"><b>Market Place</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -46,7 +46,6 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
                   <span class="hidden-xs">Sergio Alejandro Guillen Aragon</span>
                 </a>
               </li>
@@ -69,21 +68,14 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Almacén</span>
+                <span>Almacen</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="Almacen/Productos"><i class="fa fa-circle-o"></i> Productos</a></li>
+                <li><a href="{{URL::action('ProductoController@index')}}"><i class="fa fa-circle-o"></i> Productos</a></li>
+                <li><a href="{{URL::action('VendedorController@index')}}"><i class="fa fa-circle-o"></i> Vendedores</a></li>
               </ul>
             </li>
-            
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
-                        
           </ul>
         </section>
         <!-- /.sidebar -->

@@ -13,10 +13,10 @@
 					<thead>
 						<th>Id</th>
 						<th>Nombre</th>
-						<th>Peso</th>
+						<th>Peso (Lb)</th>
 						<th>Descripcion</th>
-						<th>PrecioCosto</th>
-						<th>PrecioVenta</th>
+						<th>Precio de Costo ($)</th>
+						<th>Precio de Venta ($)</th>
 						<th>Opciones</th>
 					</thead>
 					@foreach($productos as $pro)

@@ -17,7 +17,11 @@
 		{{Form::token()}}
 		<div class="form-group">
 			<label for="vendedor">Id Vendedor</label>
-			<input type="text" name="fk_vendedor" class="form-control" placeholder="Id">
+			<select name="fk_vendedor" class="form-control">
+				@foreach($vendedores as $ven)
+					<option value="{{$ven->idVendedor}}">{{$ven->Nombre}}</option>
+				@endforeach
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
@@ -37,6 +41,7 @@
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>
+			<a href="{{URL::action('ProductoController@index')}}"><button class="btn btn-danger" type="button">Cancelar</button></a>
 		</div>
 		{!!Form::close()!!}
 	</div>
