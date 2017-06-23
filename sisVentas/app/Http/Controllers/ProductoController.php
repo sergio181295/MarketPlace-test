@@ -19,7 +19,7 @@ class ProductoController extends Controller
     	if($request){
     		$query = trim($request->get('searchText'));
     		$productos = DB::table('Producto')
-    				->where('Nombre','LIKE','%'.$query.'%')
+    				->where('Nombre','LIKE',$query.'%')
     				->orderBy('idProducto','desc')
     				->paginate(7);
 			return view('Almacen.Productos.Index',["productos"=>$productos,"searchText"=>$query]);
@@ -88,7 +88,9 @@ class ProductoController extends Controller
     	return Redirect::to('Almacen/Productos');
     }
 
-    // public function destroy(){
-
-    // }
+    public function destroy($id){
+        $productoM = ProductoModel::findOrFail($id);
+        $productoM->delete();
+        return redirect()->route('Productos.index');
+    }
 }

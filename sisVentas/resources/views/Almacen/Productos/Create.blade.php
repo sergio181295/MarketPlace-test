@@ -37,7 +37,6 @@
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>
-			<!-- <a href="{{URL::action('ProductoControlle@edit',$pro->idProducto)}}"><button class="btn btn-info">Editar</button></a> -->
 		</div>
 		{!!Form::close()!!}
 	</div>
