@@ -5,6 +5,7 @@ namespace sisVentas\Http\Controllers;
 use Illuminate\Http\Request;
 
 use sisVentas\ProductoModel;
+use sisVentas\VendedorModel;
 use Illuminate\Support\Facades\Redirect;
 use sisVentas\Http\Requests\ProductoRequest;
 use DB;
@@ -57,7 +58,9 @@ class ProductoController extends Controller
     }
 
     public function show($id){
-    	return view("Almacen.Productos.show",["producto"=>ProductoModel::findOrFail($id)]);
+        $producto = ProductoModel::findOrFail($id);
+        $vendedor = VendedorModel::findOrFail($producto->fk_idVendedor);
+    	return view("Almacen.Productos.show",["producto"=>$producto,"vendedor"=>$vendedor]);
     }
 
     public function edit($id){

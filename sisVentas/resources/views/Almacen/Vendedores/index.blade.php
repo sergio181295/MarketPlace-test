@@ -1,9 +1,10 @@
 @extends ('layouts.admin')
 @section ('contenido')
 	<div class="row">
-		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"></div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		<h3>Listado de Vendedores <a href="Vendedores/create"><button class="btn btn-success">Nuevo</button></a></h3>
 		@include('Almacen.Vendedores.search')
+		</div>
 	</div>
 
 	<div class="row">
@@ -24,7 +25,7 @@
 						<td>{{$ven->Apellido}}</td>
 						<td>{{$ven->Email}}</td>
 						<td>
-							<a href="{{URL::action('VendedorController@edit',$ven->idVendedor)}}"><button class="btn btn-info">Editar</button></a>
+							<a href="{{URL::action('VendedorController@edit',$ven->idVendedor)}}"><button class="btn btn-warning">Editar</button></a>
 							<a href="" data-target="#modal-delete-vendedor-{{$ven->idVendedor}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 						</td>
 					</tr>
