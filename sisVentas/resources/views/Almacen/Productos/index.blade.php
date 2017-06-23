@@ -15,6 +15,7 @@
 						<th>Nombre</th>
 						<th>Descripcion</th>
 						<th>Precio de Venta ($)</th>
+						<th>Imagen</th>
 						<th>Opciones</th>
 					</thead>
 					@foreach($productos as $pro)
@@ -22,6 +23,9 @@
 						<td>{{$pro->Nombre}}</td>
 						<td>{{$pro->Descripcion}}</td>
 						<td>{{$pro->PrecioVenta}}</td>
+						<td>
+							<img src="{{asset('imagenes/productos/'.$pro->Imagen)}}" alt="{{$pro->Nombre}}" height="100px" width="100px" class="img-thumbnail">
+						</td>
 						<td>
 							<a href="{{URL::action('ProductoController@edit',$pro->idProducto)}}"><button class="btn btn-warning">Editar</button></a>
 							<a href="" data-target="#modal-delete-{{$pro->idProducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>

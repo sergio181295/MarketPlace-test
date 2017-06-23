@@ -25,7 +25,10 @@ class ProductoRequest extends FormRequest
     {
         return [
             'nombre'=>'required|max:45',
-            'descripcion'=>'max:300'
+            'descripcion'=>'max:300',
+            'precioCosto'=>'required|numeric',
+            'fk_vendedor'=>'required',
+            'imagen'=>'mimes:jpg,jpeg,png'
         ];
     }
 }

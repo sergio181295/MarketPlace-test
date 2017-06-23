@@ -15,7 +15,8 @@ class ProductoModel extends Model
     	'Peso',
     	'Descripcion',
     	'PrecioCosto',
-    	'PrecioVenta'
+    	'PrecioVenta',
+        'Imagen'
     ];
     protected $guarded = [];
 }

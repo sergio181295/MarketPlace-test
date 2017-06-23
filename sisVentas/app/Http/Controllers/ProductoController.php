@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sisVentas\ProductoModel;
 use sisVentas\VendedorModel;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 use sisVentas\Http\Requests\ProductoRequest;
 use DB;
 
@@ -23,7 +24,7 @@ class ProductoController extends Controller
     				->where('Nombre','LIKE',$query.'%')
     				->orderBy('idProducto','desc')
     				->paginate(7);
-			return view('Almacen.Productos.Index',["productos"=>$productos,"searchText"=>$query]);
+			return view('Almacen.Productos.index',["productos"=>$productos,"searchText"=>$query]);
 
     	}
     }
@@ -53,6 +54,14 @@ class ProductoController extends Controller
         $final = $final + ($iva * $final);
 
         $productoM->PrecioVenta = round($final,2);
+
+        //VERIFICAMOS SI SUBIO IMAGEN
+        if(input::hasFile('imagen')){
+            $file = Input::file('imagen');
+            //MOVEMOS IMAGEN A LA CARPETA IMAGENES/PRODUCTOS
+            $file->move(public_path().'/imagenes/productos/',$file->getClientOriginalName());
+            $productoM->Imagen = $file->getClientOriginalName();
+        }
         $productoM->save();
     	return Redirect::to('Almacen/Productos');
     }
@@ -88,6 +97,15 @@ class ProductoController extends Controller
         $final = $final + ($iva * $final);
 
         $productoM->PrecioVenta = round($final,2);
+
+        //VERIFICAMOS SI SUBIO IMAGEN
+        if(input::hasFile('imagen')){
+            $file = Input::file('imagen');
+            //MOVEMOS IMAGEN A LA CARPETA IMAGENES/PRODUCTOS
+            $file->move(public_path().'/imagenes/productos/',$file->getClientOriginalName());
+            $productoM->Imagen = $file->getClientOriginalName();
+        }
+        
     	$productoM->update();
     	return Redirect::to('Almacen/Productos');
     }

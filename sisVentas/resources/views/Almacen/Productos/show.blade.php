@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 @section ('contenido')
 	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<h3>Detalle del Producto</h3>
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<tr>
@@ -28,9 +28,13 @@
 					<td>Descripcion</td>
 					<td>{{$producto->Descripcion}}</td>
 				</tr>
+				<tr>
+					<td>Imagen</td>
+					<td><img src="{{asset('imagenes/productos/'.$producto->Imagen)}}" alt="{{$producto->Nombre}}" height="200px" width="200px" class="img-thumbnail"></td>
+				</tr>
 			</table>
 		</div>
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<h3>Detalle del vendedor</h3>
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<tr>
